@@ -1,0 +1,17 @@
+# execve Hook Kernel Module
+
+This Linux kernel module hooks the `execve()` syscall and logs any command execution attempts. It also blocks execution if the command contains "bash" or "sh" for demo purposes.
+
+## Usage
+
+1. Disable KASLR:  
+   `sudo perl -i -pe 's/quiet/quiet nokaslr/' /etc/default/grub && sudo update-grub && sudo reboot`
+
+2. Build and load:  
+   `make && sudo insmod execve_hook.ko`
+
+3. Check logs:  
+   `dmesg | tail`
+
+4. Unload:  
+   `sudo rmmod execve_hook`
