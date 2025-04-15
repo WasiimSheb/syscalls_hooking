@@ -1,1 +1,3 @@
-A Linux kernel module that hooks syscalls
+Linux Rootkit Modules
+This repository contains educational Linux kernel modules that demonstrate how to hook and override system calls.
+Examples show how kernel behavior can be modified at runtime.
