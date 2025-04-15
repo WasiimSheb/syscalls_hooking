@@ -1,7 +1,1 @@
-A Linux kernel module that hooks `/dev/random`'s `read_iter` to always return the value 42.
-
-## 🔧 How it works
-It overrides the read function of `/dev/random` using kernel symbols and disables write protection to patch the function pointer.
-
-## ⚠️ Disclaimer
-Educational use only. Loading kernel modules can crash your system. Use in a VM.
+A Linux kernel module that hooks syscalls
