@@ -1,4 +1,18 @@
 A Linux kernel module that hooks `/dev/random`'s `read_iter` to always return the value 42.
 
-## 🔧 How it works
 It overrides the read function of `/dev/random` using kernel symbols and disables write protection to patch the function pointer.
+
+# Disable KASLR for stable symbol addresses (do once)
+sudo perl -i -pe 's/quiet/quiet nokaslr/' /etc/default/grub
+sudo update-grub
+reboot
+
+# make and Load the module
+make
+sudo insmod random42.ko
+
+# Test
+cat /dev/random  # Should output repeated '*', which is ASCII 42
+
+# Remove the module
+sudo rmmod random42
